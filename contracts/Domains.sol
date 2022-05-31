@@ -86,15 +86,15 @@ contract Domains is ERC721 {
         return StringUtils.strlen(name) >= 3 && StringUtils.strlen(name) <= 12;
     }
 
-    function price(string calldata name) public view returns(uint) {
+    function price(string calldata name) public pure returns(uint) {
         uint len = StringUtils.strlen(name);
         require(len > 0);
         if (len == 3) {
-          return (5 * basePrice); // * 10**18
+          return 5 * 10**16; // based on 0.05 // * 10**18
         } else if (len == 4) {
-	        return (3 * basePrice); // * 10**18
+	        return 3 * 10**16; // * 10**18
         } else {
-	        return (1 * basePrice); // * 10**18
+	        return 1 * 10**16; // * 10**18
         }
     }
   	

@@ -5,7 +5,7 @@ export type MintedProps = {
   onEdit: (record: any) => void;
 };
 
-const CONTRACT_ADDRESS = '0x8f7fc7345b81fe3de6c4da19eb0fdf0d4dc52d80';
+const CONTRACT_ADDRESS = '0x5c7D719744D71Da57FDCC29AF7E06BA656274bd0';
 const tld = '.hpb';
 
 export default function RecentlyMinted({ mints, onEdit }: MintedProps) {
