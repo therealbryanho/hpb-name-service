@@ -13,6 +13,11 @@ import RecentlyMinted from './components/RecentlyMinted';
 import ConnectionStatus from './components/ConnectionStatus';
 import ConnectButton from './components/ConnectButton';
 import Avatar from './components/Avatar';
+import { InjectedConnector } from '@web3-react/injected-connector';
+import video from './img/bg.mp4';
+import img from './img/bottom.png';
+
+const MetaMask = new InjectedConnector({});
 
 const tld = '.hpb';
 
@@ -48,7 +53,8 @@ const App = () => {
 
   useEffect(() => {
     //@ts-ignore
-    if (networks[chainId?.toString(16)] === 'HPB Mainnet') {
+    //if (networks[chainId?.toString(16)] === 'HPB Mainnet') {
+    if( networks[chainId?.toString(16)]?.includes('HPB') ){
       fetchMints();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -60,7 +66,7 @@ const App = () => {
         // Try to switch to the Mumbai testnet
         await library.send(
           'wallet_switchEthereumChain',
-          [{ chainId: '0x13881' }] // Check networks.js for hexadecimal network ids
+          [{ chainId: '10D' }] // Check networks.js for hexadecimal network ids
         );
       } catch (error: any) {
         // This error code means that the chain we want has not been added to MetaMask
@@ -69,7 +75,7 @@ const App = () => {
           try {
             await library.send('wallet_addEthereumChain', [
               {
-                chainId: '0x13881',
+                chainId: '10D',
                 chainName: 'HPB Mainnet',
                 rpcUrls: ['https://hpbnode.com/'],
                 nativeCurrency: {
@@ -173,7 +179,7 @@ const App = () => {
 
         console.log('Going to pop wallet now to pay gas...');
         const tx = await contract['register'](domain, {
-          value: ethers.utils.parseEther(price)
+          value: ethers.utils.parseEther(price), gasLimit: 30000
         });
         // Wait for the transaction to be mined
         const receipt = await tx.wait();
@@ -239,7 +245,8 @@ const App = () => {
 
   const renderInputForm = () => {
     //@ts-ignore
-    if (networks[chainId?.toString(16)] !== 'HPB Mainnet') {
+    if( networks[chainId?.toString(16)]?.includes('HPB') ){
+    //if (networks[chainId?.toString(16)] !== 'HPB Mainnet') {
       return (
         <div className="connect-wallet-container">
           <h2>Connected to wrong network</h2>
@@ -359,24 +366,49 @@ const App = () => {
     <div className="App">
       <div className="container">
         <div className="header-container">
-          <header>
-            <div className="left">
-              <p className="title">💰🕘 HPB Name Service</p>
-              <p className="subtitle">Mint your High Performance Blockchain (HPB) domain name</p>
+          <header className="flex">
+            <div className="flex-item">
+              <p className="title">HPB NAME SERVICE</p>
             </div>
-            <ConnectionStatus />
+              <ConnectionStatus />
           </header>
         </div>
 
-        {active ? renderInputForm() : <ConnectButton />}
-        {/*mints && renderMints()*/}
-        <RecentlyMinted
-          mints={mints}
-          onEdit={(name: string) => {
-            setDomain(name);
-            searchDomain(name);
-          }}
-        />
+        <div className="main-container-wrapper">
+          <video autoPlay loop muted>
+            <source src={video} type="video/mp4"/>
+          </video>
+          <div className="main-container flex">
+          {active ? renderInputForm() :
+          <>
+            <div className="flex-item left">
+              <h1>HPB Name<br/>Service
+              <button
+              className="cta-button connect-wallet-button"
+              onClick={() => {
+                activate(MetaMask);
+              }}
+            >
+              Connect Wallet
+              </button>
+              </h1>
+            </div>
+            <ConnectButton/>
+            {/*mints && renderMints()*/}
+            </>
+          }
+          </div>
+        </div>
+
+        <div className="recently-minted">
+          <RecentlyMinted
+              mints={mints}
+              onEdit={(name: string) => {
+                setDomain(name);
+                searchDomain(name);
+              }}
+            />
+        </div>
 
         <div className="footer-container">
           <a
