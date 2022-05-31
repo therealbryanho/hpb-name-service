@@ -170,7 +170,7 @@ const App = () => {
     }
     // Calculate price based on length of domain (change this to match your contract)
     // 3 chars = 0.05 HPB, 4 chars = 0.03 HPB, 5 or more = 0.01 HPB
-    const price = domain.length === 3 ? '0.5' : domain.length === 4 ? '0.3' : '0.1';
+    const price = domain.length === 3 ? '0.05' : domain.length === 4 ? '0.03' : '0.01';
     console.log('Minting domain', domain, 'with price', price);
     try {
       if (active) {
