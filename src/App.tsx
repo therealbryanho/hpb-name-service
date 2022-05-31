@@ -22,7 +22,7 @@ const MetaMask = new InjectedConnector({});
 const tld = '.hpb';
 
 // Constants
-const CONTRACT_ADDRESS = '0x3AB52CCB04F6F00657Ee01e4d9C2231aA78f7b2c';
+const CONTRACT_ADDRESS = '0x8f7fc7345b81fe3de6c4da19eb0fdf0d4dc52d80';
 
 export type Record = {
   avatar: string;
