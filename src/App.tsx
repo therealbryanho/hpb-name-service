@@ -231,13 +231,13 @@ const App = () => {
       .catch(() => {
         switch (_domain.length) {
           case 3:
-            setMintPrice(0.5);
+            setMintPrice(0.05);
             break;
           case 4:
-            setMintPrice(0.3);
+            setMintPrice(0.03);
             break;
           default:
-            setMintPrice(0.1);
+            setMintPrice(0.01);
             break;
         }
       });
