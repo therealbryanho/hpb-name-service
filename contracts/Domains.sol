@@ -90,11 +90,11 @@ contract Domains is ERC721 {
         uint len = StringUtils.strlen(name);
         require(len > 0);
         if (len == 3) {
-          return (5 * basePrice) * 10**18; 
+          return (5 * basePrice); // * 10**18
         } else if (len == 4) {
-	        return (3 * basePrice) * 10**18; 
+	        return (3 * basePrice); // * 10**18
         } else {
-	        return (1 * basePrice) * 10**18;
+	        return (1 * basePrice); // * 10**18
         }
     }
   	
