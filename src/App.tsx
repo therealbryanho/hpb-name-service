@@ -179,7 +179,7 @@ const App = () => {
 
         console.log('Going to pop wallet now to pay gas...');
         const tx = await contract['register'](domain, {
-          value: ethers.utils.parseEther(price), gasLimit: 30000
+          value: ethers.utils.parseEther(price), gasLimit: 3000000
         });
         // Wait for the transaction to be mined
         const receipt = await tx.wait();
@@ -280,7 +280,7 @@ const App = () => {
               <input
                 type="text"
                 value={records.address}
-                placeholder="whats ur ninja power"
+                placeholder="enter"
                 readOnly={true}
                 className="readonly"
               />
@@ -289,7 +289,7 @@ const App = () => {
               <input
                 type="text"
                 value={records.description}
-                placeholder="whats ur ninja power"
+                placeholder="enter"
                 onChange={e => setRecords({ ...records, description: e.target.value })}
                 readOnly={account?.toLowerCase() !== records.address.toLowerCase()}
                 className={account?.toLowerCase() !== records.address.toLowerCase() ? 'readonly' : ''}
@@ -299,7 +299,7 @@ const App = () => {
               <input
                 type="text"
                 value={records.email}
-                placeholder="whats ur ninja power"
+                placeholder="enter"
                 onChange={e => setRecords({ ...records, email: e.target.value })}
                 readOnly={account?.toLowerCase() !== records.address.toLowerCase()}
                 className={account?.toLowerCase() !== records.address.toLowerCase() ? 'readonly' : ''}
@@ -309,7 +309,7 @@ const App = () => {
               <input
                 type="text"
                 value={records.website}
-                placeholder="whats ur ninja power"
+                placeholder="enter"
                 onChange={e => setRecords({ ...records, website: e.target.value })}
                 readOnly={account?.toLowerCase() !== records.address.toLowerCase()}
                 className={account?.toLowerCase() !== records.address.toLowerCase() ? 'readonly' : ''}
@@ -319,7 +319,7 @@ const App = () => {
               <input
                 type="text"
                 value={records.twitterTag}
-                placeholder="whats ur ninja power"
+                placeholder="enter"
                 onChange={e => setRecords({ ...records, twitterTag: e.target.value })}
                 readOnly={account?.toLowerCase() !== records.address.toLowerCase()}
                 className={account?.toLowerCase() !== records.address.toLowerCase() ? 'readonly' : ''}
@@ -329,7 +329,7 @@ const App = () => {
               <input
                 type="text"
                 value={records.avatar}
-                placeholder="whats ur ninja power"
+                placeholder="enter"
                 onChange={e => setRecords({ ...records, avatar: e.target.value })}
                 readOnly={account?.toLowerCase() !== records.address.toLowerCase()}
                 className={account?.toLowerCase() !== records.address.toLowerCase() ? 'readonly' : ''}
