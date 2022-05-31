@@ -260,7 +260,8 @@ const App = () => {
 
     return (
       <div className="form-container">
-        <div className="first-row">
+      <div className="first-row">
+        <span id="domain" className="record">
           <input
             type="text"
             value={domain}
@@ -272,8 +273,8 @@ const App = () => {
             }}
           />
           <p className="tld"> {tld} </p>
+          </span>
         </div>
-
         {records && (
           <>
             <span id="addr" className="record">
