@@ -14,7 +14,7 @@ export default function ConnectionStatus() {
         className="logo"
         src={
           //@ts-ignore
-          networks[chainId?.toString(16)]?.includes('HPB Mainnet') ? polygonLogo : hpbLogo
+          hpbLogo
         }
       />
       {account ? (

@@ -51,19 +51,21 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [mints, setMints] = useState<Array<any>>([]);
 
-  const web3React = useWeb3React();
+  // const web3React = useWeb3React();
 
-  web3React.activate(new InjectedConnector({
-    supportedChainIds: [269]
-  }));
-  console.log({ web3React });
+  // web3React.activate(new InjectedConnector({
+  //   supportedChainIds: [269]
+  // }));
+  // console.log({ web3React });
 
 
   useEffect(() => {
     //@ts-ignore
     //if (networks[chainId?.toString(16)] === 'HPB Mainnet') {
     //if( networks[chainId?.toString(16)]?.includes('HPB') ){
+      if (chainId !== 269) {
       fetchMints();
+      }
     //}
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [account, chainId]);
@@ -253,8 +255,8 @@ const App = () => {
 
   const renderInputForm = () => {
     //@ts-ignore
-    if( networks[chainId?.toString(16)]?.includes('HPB') ){
-    //if (networks[chainId?.toString(16)] !== 'HPB Mainnet') {
+    //if( networks[chainId?.toString(16)]?.includes('HPB') ){
+    if (chainId !== 269) {
       return (
         <div className="connect-wallet-container">
           <h2>Connected to wrong network</h2>
