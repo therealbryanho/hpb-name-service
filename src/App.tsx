@@ -63,7 +63,7 @@ const App = () => {
     //@ts-ignore
     //if (networks[chainId?.toString(16)] === 'HPB Mainnet') {
     //if( networks[chainId?.toString(16)]?.includes('HPB') ){
-      if (chainId !== 269) {
+      if (chainId == 269) {
       fetchMints();
       }
     //}
